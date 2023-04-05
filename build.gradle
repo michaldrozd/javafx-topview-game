@@ -1,0 +1,35 @@
+plugins {
+    id 'idea'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+}
+
+repositories {
+    mavenLocal()
+    gradlePluginPortal()
+    mavenCentral()
+    jcenter()
+    google()
+}
+
+dependencies {
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: '22.0.2'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: '22.0.2'
+    implementation group: 'org.openjfx', name: 'javafx-swing', version: '22.0.2'
+}
+
+application {
+    mainClass = 'TopViewGame.Main'
+}
+
+javafx {
+    version = "14.0.2"
+    modules = [ 'javafx.base', 'javafx.swing', 'javafx.graphics', 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web' ]
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs = [
+            '--module-path', '/home/m/Downloads/javafx-sdk-23/lib',
+            '--add-modules', 'javafx.controls,javafx.fxml,javafx.swing'
+    ]
+}
